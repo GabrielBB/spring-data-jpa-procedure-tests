@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.query.Procedure;
 
 import java.util.List;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepositoryWithNoCursor extends JpaRepository<Employee, Integer> {
 
     @Procedure(value = "get_employees")
     Object[] genericSingleObjectFromResultSet();

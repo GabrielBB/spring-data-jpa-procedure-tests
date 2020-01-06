@@ -1,7 +1,7 @@
 package com.github.gabrielbb.proceduretest;
 
 import com.github.gabrielbb.proceduretest.model.Employee;
-import com.github.gabrielbb.proceduretest.repository.EmployeeRepository;
+import com.github.gabrielbb.proceduretest.repository.EmployeeRepositoryWithRefCursor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +12,10 @@ import java.util.List;
 
 @Transactional
 @SpringBootTest
-class ProcedureTestApplicationTests {
+class OracleAndPostgresTests {
 
     @Autowired
-    private EmployeeRepository repo;
+    private EmployeeRepositoryWithRefCursor repo;
 
     @Test
     void testGenericSingleObjectFromResultSet() {

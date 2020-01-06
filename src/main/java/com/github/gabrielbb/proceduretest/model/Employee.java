@@ -6,13 +6,6 @@ import javax.persistence.*;
 
 @Data
 @Entity
-/*@NamedStoredProcedureQuery(name = "Employee.getEmployees",
-        procedureName = "get_employees",
-        resultClasses = Employee.class,
-        parameters = {
-                @StoredProcedureParameter(mode = ParameterMode.REF_CURSOR, type = void.class)
-        }
-)*/
 public class Employee {
 
     @Id
