@@ -1,7 +1,7 @@
 
 # spring-data-jpa @Procedure with ResultSets Testing Project
 
-I made a change to spring-data-jpa project so you can called procedures that return ResultSets and REF_CURSORs with the @Procedure annotation. This change was tested using this project with MySQL, Postgres, Oracle and SQL Server databases. Every database has its own Integration Tests since in MySQL you can return ResultSets without REF_CURSORs but in Oracle it is mandatory to use REF_CURSOR to return ResultSets. 
+In [this fork](https://github.com/GabrielBB/spring-data-jpa) I made a change to spring-data-jpa project so you can called procedures that return ResultSets and REF_CURSORs with the @Procedure annotation. This change was tested using this project with MySQL, Postgres, Oracle and SQL Server databases. Every database has its own Integration Tests since in MySQL you can return ResultSets without REF_CURSORs but in Oracle it is mandatory to use REF_CURSOR to return ResultSets. 
 
 What did I do to make it work for any of those 4 databases? I added a new parameter called "refCursor" to express that the procedure in your database is using a REF_CURSOR. Here is an Example that would work with Oracle:
 
