@@ -68,16 +68,3 @@ I added 6 unit tests covering the following cases:
         List<Dummy> entityListFrom1RowResultSetWithInputAndNamedOutputAndCursor(Integer arg);
 
 ```
-
-However, spring-data-jpa uses [HSQL](http://hsqldb.org/) for the integration tests and the HSQL [Dialect for Hibernate](https://docs.jboss.org/hibernate/orm/3.5/javadocs/org/hibernate/dialect/HSQLDialect.html) doesn't support returning REF_CURSORs so there's no way to make integration tests for this. That's why I made [another project](https://github.com/GabrielBB/spring-data-jpa-procedure-tests) to test this with MySQL, Oracle, Postgres and SQL Server dockerized databases. All the tests passed! ResultSets with or without REF_CURSORs are working perfectly. 
-
-I  found this text somewhere in the spring-data-jpa code that justifies not supporting REF_CURSORs:
-
-> Stored procedures with ResultSets are currently not supported for any
-> JPA Provider
-
-That is not true. Hibernate works with it (maybe the support was added after that comment) and all the major database dialects support it (I mentioned 4 databases that I tested with, maybe there are more). If you try to use REF_CURSOR with MySQL it will tell you the dialect doesn't support it, but as I said before, you don't need the cursor, just make a normal select inside your procedure and @Procedure will pick the result. That's why i changed that text inside the code to: 
-
-> Stored procedures with REF_CURSOR are currently not supported by the HSQL dialect
-
-I know I touched many classes, but I needed to refactor some code to make this change leaving the code easily maintainable.
