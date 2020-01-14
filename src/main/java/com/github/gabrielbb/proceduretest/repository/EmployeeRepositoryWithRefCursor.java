@@ -28,4 +28,7 @@ public interface EmployeeRepositoryWithRefCursor extends JpaRepository<Employee,
 
     @Procedure(value = "get_employees_count")
     Integer noResultSet();
+
+    @Procedure(name = "get_employees_oracle_postgres", refCursor = true)
+    List<Employee> entityListFromNamedProcedure();
 }

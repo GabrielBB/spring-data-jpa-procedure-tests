@@ -28,4 +28,7 @@ public interface EmployeeRepositoryWithNoCursor extends JpaRepository<Employee, 
 
     @Procedure(value = "get_employees_count")
     Integer noResultSet();
+
+    @Procedure(name = "get_employees_mysql")
+    List<Employee> entityListFromNamedProcedure();
 }

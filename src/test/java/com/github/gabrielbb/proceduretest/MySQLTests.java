@@ -55,7 +55,7 @@ class MySQLTests {
     @Test
     void testEntityListFromSingleRowResultSet() {
         List<Employee> employees = repo.entityListFromSingleRowResultSet();
-        Assertions.assertThat(employees).isNotEmpty();
+        Assertions.assertThat(employees).hasSize(1);
         Assertions.assertThat(employees.get(0)).isInstanceOf(Employee.class);
     }
 
@@ -63,5 +63,12 @@ class MySQLTests {
     void testNoResultSet() {
         int count = repo.noResultSet();
         Assertions.assertThat(count).isEqualTo(2);
+    }
+
+    @Test
+    void testEntityListFromNamedProcedure() {
+        List<Employee> employees = repo.entityListFromNamedProcedure();
+        Assertions.assertThat(employees).hasSize(2);
+        Assertions.assertThat(employees.get(0)).isInstanceOf(Employee.class);
     }
 }

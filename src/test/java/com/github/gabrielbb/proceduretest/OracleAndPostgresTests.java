@@ -63,4 +63,11 @@ class OracleAndPostgresTests {
         int count = repo.noResultSet();
         Assertions.assertThat(count).isEqualTo(2);
     }
+
+    @Test
+    void testEntityListFromNamedProcedure() {
+        List<Employee> employees = repo.entityListFromNamedProcedure();
+        Assertions.assertThat(employees).hasSize(2);
+        Assertions.assertThat(employees.get(0)).isInstanceOf(Employee.class);
+    }
 }
